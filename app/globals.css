@@ -2,8 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-main {
+#section1 {
 	background-image: url("/assets/svg/temple.svg"),
 		radial-gradient(ellipse at center, #e4e4e7 30%, transparent);
 	background-blend-mode: color;
+}
+#section2 {
+	background-image: url("/assets/svg/overcast.svg"),
+		radial-gradient(ellipse at center, #e4e4e7 30%, transparent);
+	background-blend-mode: color;
+}
+
+#section3 {
+	background-image: url("/assets/svg/bathroom-floor.svg"),
+		radial-gradient(circle at 30% 50%, #e4e4e7 30%, transparent);
+	background-size: 120px, 100%;
+	background-blend-mode: color;
+}
+
+#section4 {
+	background-image: url("/assets/svg/graph-paper.svg");
+	background-size: 150px;
+	background-blend-mode: color;
+}
+
+@layer components {
+	section {
+		@apply border-t-2 border-zinc-300;
+		box-shadow: 0 -20px 25px -5px rgb(0 0 0 / 0.2);
+	}
 }

@@ -1,23 +1,13 @@
 "use client";
 
-export function Model(props) {
-	const { nodes, materials } = useGLTF("/assets/models/plunger_2k.gltf");
-	const model = useRef();
-	useGSAP(
-		() => {
-			let tl = gsap.timeline({ paused: true });
-			gsap.to(model.current.position, {
-				x: "+=1",
-				ease: "none",
-				repeatRefresh: true,
-				repeat: -1,
-			});
-		},
-		{ scope: model }
+import { useGLTF } from "@react-three/drei";
+
+export default function Model(props) {
+	const { nodes, materials } = useGLTF(
+		"/assets/models/plunger/plunger_2k.gltf"
 	);
 	return (
 		<group
-			ref={model}
 			{...props}
 			dispose={null}
 		>
@@ -31,4 +21,4 @@ export function Model(props) {
 	);
 }
 
-useGLTF.preload("/assets/models/plunger_2k.gltf");
+useGLTF.preload("/assets/models/plunger/plunger_2k.gltf");

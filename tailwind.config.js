@@ -20,6 +20,7 @@ module.exports = {
 				screen: "100svh",
 				"screen+": "100lvh",
 				"screen-dynamic": "100dvh",
+				"screen-20": "120vh",
 			},
 			backgroundSize: {
 				"200%": "200%",
