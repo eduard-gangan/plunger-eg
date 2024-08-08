@@ -26,6 +26,11 @@
 	background-blend-mode: color;
 }
 
+/* .line-path {
+	stroke-dasharray: 186;
+	stroke-dashoffset: 186;
+} */
+
 @layer components {
 	section {
 		@apply border-t-2 border-zinc-300;
