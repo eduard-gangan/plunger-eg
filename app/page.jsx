@@ -27,6 +27,7 @@ export default function Home() {
 	useGSAP(
 		() => {
 			gsap.registerPlugin(ScrollTrigger);
+			let mm = gsap.matchMedia();
 
 			if (window.innerWidth < 768) {
 				setscale(10);
@@ -86,46 +87,80 @@ export default function Home() {
 				},
 			});
 
-			gsap.to(model.current, {
-				scrollTrigger: {
-					scrub: true,
-					trigger: "#section4",
-					start: "top bottom",
-					end: "30% 50%",
-					// markers: true,
-					onUpdate: ({ progress }) => {
-						setrotation([
-							Math.PI / 6 - (Math.PI / 9) * progress,
-							Math.PI + Math.PI * progress,
-							(-Math.PI * 4) / 5 + ((Math.PI * 4) / 5) * progress,
-						]);
-						setposition([-2 - 2.5 * progress, 1 + 0.3 * progress, 0]);
-						if (window.innerWidth < 768) {
-							setscale(20 - progress * 10);
-						} else {
+			mm.add("(min-width: 769px)", () => {
+				gsap.to(model.current, {
+					scrollTrigger: {
+						scrub: true,
+						trigger: "#section4",
+						start: "top bottom",
+						end: "30% 50%",
+						// markers: true,
+						onUpdate: ({ progress }) => {
+							setrotation([
+								Math.PI / 6 - (Math.PI / 9) * progress,
+								Math.PI + Math.PI * progress,
+								(-Math.PI * 4) / 5 + ((Math.PI * 4) / 5) * progress,
+							]);
+							setposition([-2 - 2.5 * progress, 1 + 0.3 * progress, 0]);
 							setscale(30 - progress * 23);
-						}
+						},
 					},
-				},
+				});
+				gsap.to(model.current, {
+					scrollTrigger: {
+						scrub: 2,
+						trigger: "#section4",
+						start: "top bottom",
+						end: "top top",
+						onUpdate: ({ progress }) => {
+							setpositionB([1.5, -10 + progress * 10, 0]);
+							// setrotationB([
+							// 	0,
+							// 	(-Math.PI / 2) * progress,
+							// 	(-Math.PI / 2) * progress,
+							// ]);
+						},
+					},
+				});
 			});
 
-			// animate banana
-			gsap.to(model.current, {
-				scrollTrigger: {
-					scrub: 2,
-					trigger: "#section4",
-					start: "top bottom",
-					end: "top top",
-					onUpdate: ({ progress }) => {
-						setpositionB([1.5, -10 + progress * 10, 0]);
-						// setrotationB([
-						// 	0,
-						// 	(-Math.PI / 2) * progress,
-						// 	(-Math.PI / 2) * progress,
-						// ]);
+			mm.add("(max-width: 768px)", () => {
+				gsap.to(model.current, {
+					scrollTrigger: {
+						scrub: true,
+						trigger: "#section4",
+						start: "top bottom",
+						end: "30% 50%",
+						// markers: true,
+						onUpdate: ({ progress }) => {
+							setrotation([
+								Math.PI / 6 - (Math.PI / 9) * progress,
+								Math.PI + Math.PI * progress,
+								(-Math.PI * 4) / 5 + ((Math.PI * 4) / 5) * progress,
+							]);
+							setposition([-2, 1 - 0.7 * progress, 0]);
+							setscale(20 - progress * 13);
+						},
 					},
-				},
+				});
+				gsap.to(model.current, {
+					scrollTrigger: {
+						scrub: 2,
+						trigger: "#section4",
+						start: "top bottom",
+						end: "top top",
+						onUpdate: ({ progress }) => {
+							setpositionB([1, -10 + progress * 10, 0]);
+							// setrotationB([
+							// 	0,
+							// 	(-Math.PI / 2) * progress,
+							// 	(-Math.PI / 2) * progress,
+							// ]);
+						},
+					},
+				});
 			});
+			// animate banana
 
 			const text = gsap.utils.toArray(".text-fade");
 			text.forEach((el) => {
@@ -181,15 +216,17 @@ export default function Home() {
 				});
 			});
 
-			gsap.to(".letter", {
-				opacity: 0,
-				scrollTrigger: {
-					trigger: "#section4",
-					start: "top 30%",
-					end: "top top",
-					scrub: 1,
-					// markers: true,
-				},
+			mm.add("(min-width: 769px)", () => {
+				gsap.to(".letter", {
+					opacity: 0,
+					scrollTrigger: {
+						trigger: "#section4",
+						start: "top 30%",
+						end: "top top",
+						scrub: 1,
+						// markers: true,
+					},
+				});
 			});
 
 			gsap.from(".banana", {
@@ -207,7 +244,7 @@ export default function Home() {
 	);
 	return (
 		<main
-			className="min-h-screen"
+			className="min-h-screen overflow-x-hidden"
 			ref={main}
 		>
 			<Canvas
@@ -263,7 +300,7 @@ export default function Home() {
 				>
 					@eduard_gangan
 				</Link> */}
-				<h1 className="text-8xl font-black bg-gradient-to-b from-zinc-600 to-zinc-950 bg-clip-text text-transparent font-heading leading-tight z-10 text-fade">
+				<h1 className="text-4xl md:text-8xl font-black bg-gradient-to-b from-zinc-600 to-zinc-950 bg-clip-text text-transparent font-heading !leading-tight z-10 text-fade">
 					The Plunger™
 				</h1>
 			</section>
@@ -271,11 +308,11 @@ export default function Home() {
 				id="section2"
 				className="min-h-screen grid p-8 relative"
 			>
-				<h2 className="self-end font-heading font-bold text-8xl z-10 *:bg-gradient-to-b *:from-zinc-600 *:to-zinc-950 *:bg-clip-text *:text-transparent leading-tight">
+				<h2 className="self-end font-heading font-bold text-5xl md:text-8xl z-10 *:bg-gradient-to-b *:from-zinc-600 *:to-zinc-950 *:bg-clip-text *:text-transparent leading-tight">
 					<div className="text-fade">The Perfect</div>
 					<div className="text-fade">Multitool</div>
 				</h2>
-				<ul className="absolute justify-self-end even:*:text-zinc-600 odd:*:text-zinc-800 text-3xl list-disc grid gap-2 font-heading m-8">
+				<ul className="absolute justify-self-end even:*:text-zinc-600 odd:*:text-zinc-800 text-xl md:text-3xl list-disc grid gap-1 md:gap-2 font-heading m-8 z-10">
 					<li className="items">Unclog toilets</li>
 					<li className="items">Open wine bottles</li>
 					<li className="items">Mash potatoes</li>
@@ -287,17 +324,17 @@ export default function Home() {
 			</section>
 			<section
 				id="section3"
-				className="min-h-screen relative overflow-hidden"
+				className="min-h-screen relative overflow-hidden grid place-content-center gap-16 max-md:pr-6 max-md:pl-24"
 			>
-				<div className="absolute max-w-80 text-lg text-zinc-700 left-1/3 top-36 before:absolute before:content-['1'] before:text-10xl before:-left-20 before:top-4 before:font-heading before:text-zinc-400/50 z-10 before:-z-10 steps">
+				<div className="md:absolute max-w-80 md:text-lg text-zinc-700 md:left-1/3 md:top-36 before:absolute before:content-['1'] before:text-9xl md:before:text-10xl before:-left-20 before:-top-8 before:font-heading before:text-zinc-400/50 z-10 before:-z-10 steps">
 					The plunger's suction cup grips any surface with incredible strength,
-					tackling clogs effortlessly every time.
+					tackling clogs every time.
 				</div>
-				<div className="absolute max-w-80 text-lg text-zinc-700 right-[20%] top-80 before:absolute before:content-['2'] before:text-10xl before:-left-28 before:top-4 before:font-heading before:text-zinc-400/50 z-10 before:-z-10 steps">
+				<div className="md:absolute max-w-80 md:text-lg text-zinc-700 md:right-[20%] md:top-80 before:absolute before:content-['2'] before:text-9xl md:before:text-10xl before:-left-[88px] md:before:-left-28 before:-top-8 before:font-heading before:text-zinc-400/50 z-10 before:-z-10 steps">
 					Crafted precisely, the suction cup forms an airtight seal, ensuring
 					efficiency on all surfaces.
 				</div>
-				<div className="absolute max-w-80 text-lg text-zinc-700 right-24 top-132 before:absolute before:content-['3'] before:text-10xl before:-left-24 before:font-heading before:text-zinc-400/50 z-10 before:-z-10 steps">
+				<div className="md:absolute max-w-80 md:text-lg text-zinc-700 md:right-24 md:top-132 before:absolute before:content-['3'] before:text-9xl md:before:text-10xl before:-left-20 md:before:-left-24 before:-top-8 md:before:-top-12 before:font-heading before:text-zinc-400/50 z-10 before:-z-10 steps">
 					This ideal plunger's suction cup is versatile, perfect for creative
 					uses and unique household hacks.
 				</div>
@@ -308,7 +345,7 @@ export default function Home() {
 					x="0px"
 					y="0px"
 					enableBackground="new 0 0 100 100"
-					className="fill-zinc-400/50 absolute -left-12 top-0 -rotate-12"
+					className="fill-zinc-400/50 absolute -left-40 md:-left-12 top-64 md:top-0 -rotate-12 max-md:w-204 max-md:h-204"
 					viewBox="20.83 11.93 62.88 75.5"
 					width={1400}
 					height={1400}
@@ -325,14 +362,14 @@ export default function Home() {
 				id="section4"
 				className="min-h-screen grid content-center p-8 font-bold relative"
 			>
-				<h2 className="leading-tight text-8xl font-heading *:bg-gradient-to-b *:from-zinc-600 *:to-zinc-950 *:bg-clip-text *:text-transparent grid">
+				<h2 className="*:leading-tight text-5xl md:text-8xl font-heading *:bg-gradient-to-b *:from-zinc-600 *:to-zinc-950 *:bg-clip-text *:text-transparent grid max-md:gap-12">
 					<div>Order your</div>
-					<div className="justify-self-center text-[18rem] opacity-50">
+					<div className="justify-self-center leading-tight text-[80px] md:text-[18rem] opacity-50">
 						P<span className="letter">l</span>unger
 					</div>
 					<div className="justify-self-end">Today</div>
 				</h2>
-				<div className="absolute left-1/2 -translate-x-1/2 bottom-32 text-lg text-zinc-500 banana">
+				<div className="absolute left-1/2 -translate-x-1/2 bottom-16 md:bottom-32 text-lg text-zinc-500 banana">
 					( Banana for scale )
 				</div>
 			</section>

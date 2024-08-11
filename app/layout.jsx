@@ -10,20 +10,23 @@ const merri = Merriweather({
 });
 
 export const metadata = {
-	title: "Creative Studio",
-	// metadataBase: "https://studio-eg.netlify.app",
-	// description: "We design and build kick-ass experiences",
-	// openGraph: {
-	// 	title: "Creative Studio",
-	// 	description: "We design and build kick-ass experiences",
-	// 	images: "/assets/img/blob.jpg",
-	// },
-	// twitter: {
-	// 	card: "summary_large_image",
-	// 	title: "Creative Studio",
-	// 	description: "We design and build kick-ass experiences",
-	// 	image: "/assets/img/blob.jpg",
-	// },
+	title: "The Plunger",
+	metadataBase: "https://plunger-eg.netlify.app",
+	description:
+		"The plunger's suction cup grips any surface with incredible strength, tackling clogs every time. Crafted precisely, the suction cup forms an airtight seal, ensuring efficiency on all surfaces. This ideal plunger's suction cup is versatile, perfect for creative uses and unique household hacks.",
+	openGraph: {
+		title: "The Plunger",
+		description:
+			"The plunger's suction cup grips any surface with incredible strength, tackling clogs every time. Crafted precisely, the suction cup forms an airtight seal, ensuring efficiency on all surfaces. This ideal plunger's suction cup is versatile, perfect for creative uses and unique household hacks.",
+		images: "/assets/img/plunger.png",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "The Plunger",
+		description:
+			"The plunger's suction cup grips any surface with incredible strength, tackling clogs every time. Crafted precisely, the suction cup forms an airtight seal, ensuring efficiency on all surfaces. This ideal plunger's suction cup is versatile, perfect for creative uses and unique household hacks.",
+		image: "/assets/img/plunger.png",
+	},
 	// icons: {
 	// 	shortcut: { url: "/favicon.ico", type: "image/x-icon" },
 	// 	icon: [
