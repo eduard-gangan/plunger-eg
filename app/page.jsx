@@ -244,7 +244,7 @@ export default function Home() {
 	);
 	return (
 		<main
-			className="min-h-screen overflow-x-hidden"
+			className="min-h-screen+ overflow-x-hidden"
 			ref={main}
 		>
 			<Canvas
@@ -291,7 +291,7 @@ export default function Home() {
 			</Canvas>
 			<section
 				id="section1"
-				className="min-h-screen grid content-end justify-center py-24 relative"
+				className="min-h-screen+ grid content-end justify-center py-24 relative"
 			>
 				{/* <Link
 					href="https://x.com/eduard_gangan"
@@ -306,7 +306,7 @@ export default function Home() {
 			</section>
 			<section
 				id="section2"
-				className="min-h-screen grid p-8 relative"
+				className="min-h-screen+ grid p-8 relative"
 			>
 				<h2 className="self-end font-heading font-bold text-5xl md:text-8xl z-10 *:bg-gradient-to-b *:from-zinc-600 *:to-zinc-950 *:bg-clip-text *:text-transparent leading-tight">
 					<div className="text-fade">The Perfect</div>
@@ -324,7 +324,7 @@ export default function Home() {
 			</section>
 			<section
 				id="section3"
-				className="min-h-screen relative overflow-hidden grid place-content-center gap-16 max-md:pr-6 max-md:pl-24"
+				className="min-h-screen+ relative overflow-hidden grid place-content-center gap-16 max-md:pr-6 max-md:pl-24"
 			>
 				<div className="md:absolute max-w-80 md:text-lg text-zinc-700 md:left-1/3 md:top-36 before:absolute before:content-['1'] before:text-9xl md:before:text-10xl before:-left-20 before:-top-8 before:font-heading before:text-zinc-400/50 z-10 before:-z-10 steps">
 					The plunger's suction cup grips any surface with incredible strength,
@@ -360,7 +360,7 @@ export default function Home() {
 			</section>
 			<section
 				id="section4"
-				className="min-h-screen grid content-center p-8 font-bold relative"
+				className="min-h-screen+ grid content-center p-8 font-bold relative"
 			>
 				<h2 className="*:leading-tight text-5xl md:text-8xl font-heading *:bg-gradient-to-b *:from-zinc-600 *:to-zinc-950 *:bg-clip-text *:text-transparent grid max-md:gap-12">
 					<div>Order your</div>
